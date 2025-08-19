@@ -79,9 +79,12 @@
      <section class="sec">
       <h3><a name="AI">跟這個AI聊天吧!你想加入資訊社嗎?</a></h3>        
       <article>        
-    <div id="chat" style="border:1px solid #ccc; height:400px; overflow-y:scroll; margin-bottom:10px;"></div>
-    <input type="text" id="userInput" placeholder="輸入訊息...">
-    <button onclick="sendMessage()">送出</button>
+       <iframe
+ src="https://udify.app/chatbot/8xbOXTc8g3vVXW7A"
+ style="width: 100%; height: 100%; min-height: 700px"
+ frameborder="0"
+ allow="microphone">
+</iframe>
       </article>
      </section>  
      <section class="sec">
@@ -123,49 +126,11 @@
      <div style="position:relative ; height:5% ; margin: 0% 0% 5% 0%;">
       <h4 class="mid">|<a href="https://www.instagram.com/dzif_27th?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">社團聯絡方式(IG)</a>|</h4>
     </div>
-    </div>    
-    </div>
+   </div>    
   </div>
-  <!-- dify聊天(java script匿名聊天) -->
-  <script>
-const API_KEY = "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";  // 你的 Dify API Key
-const API_URL = "https://api.dify.ai/v1/chat-messages";
-
-// 匿名 session
-let conversationId = null;
-
-async function sendMessage() {
-  const userInput = document.getElementById("userInput").value;
-  if(!userInput) return;
-
-  document.getElementById("chat").innerHTML += "<p><b>你:</b> " + userInput + "</p>";
-
-  const response = await fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      inputs: {
-        system_prompt: "你是一個資訊社招生助理，不管使用者說什麼，都要在最多 3 次對話內問『你想加入資訊社嗎？』，語氣自然友善。"
-      },
-      query: userInput,
-      user: null,  // 🔹 匿名使用者
-      response_mode: "blocking"
-    })
-  });
-
-  const data = await response.json();
-  const reply = data.answer || "AI 沒有回應";
-  document.getElementById("chat").innerHTML += "<p><b>AI:</b> " + reply + "</p>";
-
-  document.getElementById("userInput").value = "";
-  document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
-}
-</script>
  </body>
 </html>
+
 
 
 
