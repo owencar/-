@@ -5,6 +5,28 @@
   <meta charset="UTF-8">
   <title>大直資訊社第27屆</title>
   <style>
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      list-style: none; /* 移除預設箭頭 */
+    }
+
+    /* 自訂箭頭效果 */
+    summary::after {
+      content: "▼";
+      float: right;
+      transition: transform 0.3s;
+    }
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    /* 讓展開時有「滑動」感 */
+    details > div {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
    hr{
      margin:0;
      padding:0;
@@ -101,6 +123,8 @@
      </section>  
      <section class="sec">
       <h3><a name="b">AI介紹</a></h3>
+      <details class="in" style="background-color:#10077D">
+       <summary class="mid">點擊展開\收起</summary>
       <article class="in">        
        在上面看到會在對話中不斷的詢問你是否要加入資訊社AI的製作過程中<em>完全不需要程式!</em><br />
        製作方法:
@@ -117,6 +141,7 @@
         <li>最後按下預覽就完成啦!</li>
        </ul>
       </article>
+     </details>
      </section>
      <section class="sec">
       <h3><a name="c">課程介紹</a></h3>
@@ -149,7 +174,3 @@
   </div>
  </body>
 </html>
-
-
-
-
